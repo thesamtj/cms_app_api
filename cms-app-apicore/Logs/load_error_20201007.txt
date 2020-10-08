@@ -1,0 +1,52 @@
+----------------------------------------------------------------------
+Timestamp - 10/7/2020 11:36:29 AM +01:00 | Level - Error |
+----------------------------------------------------------------------
+Error : "Attempted to divide by zero."
+StackTrace : "   at cms_app_apicore.Program.Main(String[] args) in C:\Users\Omali\Documents\Tech\WebAppDevelopment\ASPNetMVC\CMSApplication\cms-app-apicore\cms-app-apicore\Program.cs:line 28"
+InnerException : null
+Source : "cms-app-apicore"
+Application : "CMS_APP_API"
+MachineName : "DESKTOP-46ESV52"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.18363.0"
+Version : "3.1.8"
+UserName : "Omali"
+ProcessId : 9304
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 10/7/2020 4:04:44 PM +01:00 | Level - Error |
+----------------------------------------------------------------------
+Application : "CMS_APP_API"
+MachineName : "DESKTOP-46ESV52"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.18363.0"
+Version : "3.1.8"
+UserName : "Omali"
+ProcessId : 18828
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 10/7/2020 4:04:44 PM +01:00 | Level - Fatal |
+----------------------------------------------------------------------
+Application : "CMS_APP_API"
+MachineName : "DESKTOP-46ESV52"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.18363.0"
+Version : "3.1.8"
+UserName : "Omali"
+ProcessId : 18828
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------
+----------------------------------------------------------------------
+Timestamp - 10/7/2020 4:04:44 PM +01:00 | Level - Warning |
+----------------------------------------------------------------------
+Application : "CMS_APP_API"
+MachineName : "DESKTOP-46ESV52"
+CurrentManagedThreadId : 1
+OSVersion : "Microsoft Windows NT 10.0.18363.0"
+Version : "3.1.8"
+UserName : "Omali"
+ProcessId : 18828
+ProcessName : "iisexpress"
+---------------------------------------------------------------------------

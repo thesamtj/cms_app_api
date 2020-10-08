@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using LoggingService;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,15 +22,9 @@ namespace cms_app_apicore
             
             using (var scope = host.Services.CreateScope())
             {
-                try
-                {
-                    int zero = 0;
-                    int result = 100 / zero;
-                }
-                catch (DivideByZeroException ex)
-                {
-                    Log.Error("An error occured while sending the database {Error} {StackTrace} {InnerException} {Source}", ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
-                }
+                Log.Error("Some Error");
+                Log.Fatal("Some Error");
+                Log.Warning("Some Error");
             }
 
             host.Run();
@@ -47,8 +44,8 @@ namespace cms_app_apicore
                      .Enrich.WithProperty("UserName", Environment.UserName)
                      .Enrich.WithProperty("ProcessId", Process.GetCurrentProcess().Id)
                      .Enrich.WithProperty("ProcessName", Process.GetCurrentProcess().ProcessName)
-                     .WriteTo.Console(theme: CustomConsoleTheme.VisualStudioMacLight)
-                     .WriteTo.File(formatter: new CustomTextFormatter(), path: Path.Combine(hostingContext.HostingEnvironment.ContentRootPath + $"{Path.DirectorySeparatorChar}Logs{Path.DirectorySeparatorChar}", $"cms_app_api_{DateTime.Now:yyyyMMdd}.txt"))
+                     .WriteTo.Console(theme: CustomConsoleTheme.VisualStudioLight)
+                     .WriteTo.File(formatter: new CustomTextFormatter(), path: Path.Combine(hostingContext.HostingEnvironment.ContentRootPath + $"{Path.DirectorySeparatorChar}Logs{Path.DirectorySeparatorChar}", $"load_error_{DateTime.Now:yyyyMMdd}.txt"))
                     .ReadFrom.Configuration(hostingContext.Configuration));
                     webBuilder.UseStartup<Startup>();
                 });
