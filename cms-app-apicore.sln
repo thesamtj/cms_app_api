@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelService", "ModelService\ModelService.csproj", "{CD24E871-9A4C-4BE1-8EC1-A1C7050A407D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalService", "FunctionalService\FunctionalService.csproj", "{9721C50B-EF17-457A-9315-C462BD4C6C16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CD24E871-9A4C-4BE1-8EC1-A1C7050A407D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD24E871-9A4C-4BE1-8EC1-A1C7050A407D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD24E871-9A4C-4BE1-8EC1-A1C7050A407D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9721C50B-EF17-457A-9315-C462BD4C6C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9721C50B-EF17-457A-9315-C462BD4C6C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9721C50B-EF17-457A-9315-C462BD4C6C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9721C50B-EF17-457A-9315-C462BD4C6C16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
