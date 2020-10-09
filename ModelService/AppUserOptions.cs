@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ModelService
 {
-    class AppUserOptions
+    public class AppUserOptions
     {
         public string Email { get; set; }
         public string Password { get; set; }
