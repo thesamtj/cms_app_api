@@ -2,13 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataService;
+using FunctionalService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ModelService;
 
 namespace cms_app_apicore
 {
@@ -29,10 +33,10 @@ namespace cms_app_apicore
             /*                              DB CONNECTION OPTIONS                                                */
             /*---------------------------------------------------------------------------------------------------*/
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("CmsCoreNg_DEV"), x => x.MigrationsAssembly("CMS_CORE_NG")));
+            options.UseSqlServer(Configuration.GetConnectionString("CmsCoreNg_DEV"), x => x.MigrationsAssembly("cms-app-apicore")));
 
             services.AddDbContext<DataProtectionKeysContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContext"), x => x.MigrationsAssembly("CMS_CORE_NG")));
+            options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContext"), x => x.MigrationsAssembly("cms-app-apicore")));
             /*---------------------------------------------------------------------------------------------------*/
             /*                             Functional SERVICE                                                    */
             /*---------------------------------------------------------------------------------------------------*/
