@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using DataService;
+using FunctionalService;
 using LoggingService;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,9 +24,22 @@ namespace cms_app_apicore
             
             using (var scope = host.Services.CreateScope())
             {
-                Log.Error("Some Error");
-                Log.Fatal("Some Error");
-                Log.Warning("Some Error");
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    var dpContext = services.GetRequiredService<DataProtectionKeysContext>();
+                    var functionSvc = services.GetRequiredService<IFunctionalSvc>();
+                    //var countrySvc = services.GetRequiredService<ICountrySvc>();
+
+                    DbContextInitializer.Initialize(dpContext, context, functionSvc).Wait();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("An error occurred while seeding the database  {Error} {StackTrace} {InnerException} {Source}",
+                     ex.Message, ex.StackTrace, ex.InnerException, ex.Source);
+                }
             }
 
             host.Run();
