@@ -25,6 +25,20 @@ namespace cms_app_apicore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            /*---------------------------------------------------------------------------------------------------*/
+            /*                              DB CONNECTION OPTIONS                                                */
+            /*---------------------------------------------------------------------------------------------------*/
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("CmsCoreNg_DEV"), x => x.MigrationsAssembly("CMS_CORE_NG")));
+
+            services.AddDbContext<DataProtectionKeysContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DataProtectionKeysContext"), x => x.MigrationsAssembly("CMS_CORE_NG")));
+            /*---------------------------------------------------------------------------------------------------*/
+            /*                             Functional SERVICE                                                    */
+            /*---------------------------------------------------------------------------------------------------*/
+            services.AddTransient<IFunctionalSvc, FunctionalSvc>();
+            services.Configure<AdminUserOptions>(Configuration.GetSection("AdminUserOptions"));
+            services.Configure<AppUserOptions>(Configuration.GetSection("AppUserOptions"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
