@@ -43,6 +43,35 @@ namespace cms_app_apicore
             services.AddTransient<IFunctionalSvc, FunctionalSvc>();
             services.Configure<AdminUserOptions>(Configuration.GetSection("AdminUserOptions"));
             services.Configure<AppUserOptions>(Configuration.GetSection("AppUserOptions"));
+            /*---------------------------------------------------------------------------------------------------*/
+            /*                              DEFAULT IDENTITY OPTIONS                                             */
+            /*---------------------------------------------------------------------------------------------------*/
+            var identityDefaultOptionsConfiguration = Configuration.GetSection("IdentityDefaultOptions");
+            services.Configure<IdentityDefaultOptions>(identityDefaultOptionsConfiguration);
+            var identityDefaultOptions = identityDefaultOptionsConfiguration.Get<IdentityDefaultOptions>();
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = identityDefaultOptions.PasswordRequireDigit;
+                options.Password.RequiredLength = identityDefaultOptions.PasswordRequiredLength;
+                options.Password.RequireNonAlphanumeric = identityDefaultOptions.PasswordRequireNonAlphanumeric;
+                options.Password.RequireUppercase = identityDefaultOptions.PasswordRequireUppercase;
+                options.Password.RequireLowercase = identityDefaultOptions.PasswordRequireLowercase;
+                options.Password.RequiredUniqueChars = identityDefaultOptions.PasswordRequiredUniqueChars;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(identityDefaultOptions.LockoutDefaultLockoutTimeSpanInMinutes);
+                options.Lockout.MaxFailedAccessAttempts = identityDefaultOptions.LockoutMaxFailedAccessAttempts;
+                options.Lockout.AllowedForNewUsers = identityDefaultOptions.LockoutAllowedForNewUsers;
+
+                // User settings
+                options.User.RequireUniqueEmail = identityDefaultOptions.UserRequireUniqueEmail;
+
+                // email confirmation require
+                options.SignIn.RequireConfirmedEmail = identityDefaultOptions.SignInRequireConfirmedEmail;
+
+            }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
