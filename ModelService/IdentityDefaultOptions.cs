@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ModelService
 {
-    class IdentityDefaultOptions
+    public class IdentityDefaultOptions
     {
         /*---------------------------------------------------------------------------------------------------*/
         /*                              Password Properties                                                  */
